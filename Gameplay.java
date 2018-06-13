@@ -42,8 +42,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
     
     private ImageIcon rickImage;
     
-    private int[] enemyXPos = {50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050, 1100, 1150}; //razem 23 liczby
-    private int[] enemyYPos = {50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650}; //razem 13 liczby
+    private int[] enemyXPos = {50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000, 1050, 1100, 1150};
+    private int[] enemyYPos = {50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650};
         
     private ImageIcon enemyImage;
     
@@ -79,19 +79,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             snakeXlength[0] = 50;
             snakeYlength[0] = 50;
         }
-               
-        //rysowanie punktów
+
         g.setColor(Color.WHITE);
         g.setFont(new Font("Verdana", Font.PLAIN, 14));
         g.drawString("Punkty: " + score, 1080, 30);
         g.drawString("P = PAUZA", 500, 30);
         
         if(szybko)
-            g.drawString("Zajebiście szybko!" , 100, 30);
+            g.drawString("Szybko!" , 100, 30);
         else if(normalnie)
             g.drawString("Normalna prędkość" , 100, 30);
         else if(wolno)
-            g.drawString("W chuj wolno" , 100, 30);
+            g.drawString("Wolno" , 100, 30);
         
         if(pauza)
         {
@@ -137,7 +136,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         
         enemyImage.paintIcon(this, g, enemyXPos[xpos], enemyYPos[ypos]);
         
-        for(int j = 1; j < lengthOfSnake; j++) //gdy waż ugryzie sie w ogon
+        for(int j = 1; j < lengthOfSnake; j++) //gdy wąż ugryzie sie w ogon
         {
             if(snakeXlength[j] == snakeXlength[0] && snakeYlength[j] == snakeYlength[0])
             {
@@ -148,7 +147,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                 
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("arial", Font.BOLD, 50));
-                g.drawString("Zjebałeś!", 500, 400);
+                g.drawString("Przegrałeś", 500, 400);
                 
                 g.setFont(new Font("arial", Font.BOLD, 20));
                 g.drawString("Naciśnij SPACJE aby kontynuować", 460, 440);
@@ -223,7 +222,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
            
            timer.start();
         }
-        if(ke.getKeyCode() == KeyEvent.VK_SPACE)  //restart gry - spacja
+        if(ke.getKeyCode() == KeyEvent.VK_SPACE)
         {
             moves = 0;
             score = 0;
